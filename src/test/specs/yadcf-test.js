@@ -187,6 +187,20 @@ describe('yadcf test', () => {
             assert.equal(infoText, showOneInfo);
         });
 
+        it('from with function property - one match', () => {
+            // arrange
+            const inputElement = $('#yadcf-filter--example-from-3');
+            inputElement.setValue('3');
+            // get values
+            const infoElement = $('#example_info');
+            const infoText = infoElement.getText();
+            const filteredTd = $('td=4');
+            const tdText = filteredTd.getText();
+            // assert
+            assert.equal(tdText, '4');
+            assert.equal(infoText, showOneInfo);
+        });
+
         it('exclude from - one match', () => {
             // arrange
             const inputElement = $('#yadcf-filter--example-from-1');

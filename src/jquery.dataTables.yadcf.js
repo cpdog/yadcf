@@ -752,8 +752,12 @@ if (!Object.entries) {
 			var i = 0;
 			dot_refs = dot_refs.split(".");
 			for (i = 0; i < dot_refs.length; i++) {
-				if (tmpObj[dot_refs[i]] !== undefined && tmpObj[dot_refs[i]] !== null) {
-					tmpObj = tmpObj[dot_refs[i]];
+				var dotRefSafe = dot_refs[i].replace(/\(\)$/,"");
+				if (tmpObj[dotRefSafe] !== undefined && tmpObj[dotRefSafe] !== null) {
+					tmpObj = tmpObj[dotRefSafe];
+					if (typeof tmpObj === 'function') {
+						tmpObj = tmpObj();
+					}
 				} else {
 					return '';
 				}

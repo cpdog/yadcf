@@ -28,20 +28,23 @@
       },
       height: 0,
       level: 'master',
+      heightFunc: function(){return 0;}
     },
     {
       id: {
         name: 'Tiger'
       },
       height: 4,
-      level: null
+      level: null,
+      heightFunc: function(){return 4 ;}
     },
     {
       id: {
         name: 'Lion1234'
       },
       height: null,
-      level: 'noob'
+      level: 'noob',
+      heightFunc: function(){return null ;}
     }
   ];
 
@@ -69,6 +72,11 @@
           data: 'level',
           render: renderFunc,
         },
+        {
+          title: "heightFunc",
+          data: 'heightFunc()',
+          render: renderFunc,
+        }
       ]
     });
     yadcf.init(table, [
@@ -90,6 +98,10 @@
         filter_type: "select",
         data:['master', 'noob', null],
         exclude: true,
+      },
+      {
+        column_number: 3,
+        filter_type: "range_number"
       }
     ]);
 
